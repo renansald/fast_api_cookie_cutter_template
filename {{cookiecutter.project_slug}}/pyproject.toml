@@ -1,0 +1,53 @@
+[tool.poetry]
+name = "{{cookiecutter.project_slug}}"
+version = "{{cookiecutter.version}}"
+description = "{{cookiecutter.description}}"
+authors = ["{{cookiecutter.author}}"]
+license = "{{cookiecutter.license}}"
+packages = [
+    { include = "app" }
+]
+
+[tool.poetry.dependencies]
+python = "^{{cookiecutter.python_version}}"
+fastapi = "^0.115"
+starlette = "^0.37.2"
+authlib = "^1.2.0"
+dependency-injector = "^4.46.0"
+pydantic = "^2.11"
+uvicorn = {extras = ["standard"], version = "^0.23.0"}
+python-dotenv = "^1.1.0"
+httpx = "^0.28.0"
+pydantic-settings = "^2.8.1"
+okta-jwt-verifier = "^0.2.7"
+loguru = "^0.7.3"
+opencensus-ext-azure = "^1.1.14"
+opencensus = "^0.11.4"
+azure-monitor-opentelemetry-exporter = "^1.0.0b35"
+opentelemetry-sdk = "^1.31.1"
+opentelemetry-instrumentation-fastapi = "^0.52b1"
+opentelemetry-instrumentation-logging = "^0.52b1"
+opentelemetry-instrumentation-requests = "^0.52b1"
+opentelemetry-instrumentation-asgi = "^0.52b1"
+opentelemetry-instrumentation-httpx = "^0.52b1"
+
+[poetry.group.dev.dependencies]
+pytest = "^8.3.5"
+ruff = "^0.0.20"
+black = "^22.3.0"
+
+[tool.ruff]
+line-length = 88
+select = ["E", "F", "W", "C"]
+ignore = ["E203", "W503"]
+
+[tool.black]
+line-length = 88
+target-version = ["py312"]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+run = "uvicorn app.main:app --reload"
