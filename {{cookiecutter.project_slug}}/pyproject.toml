@@ -1,15 +1,15 @@
 [tool.poetry]
-name = "{{cookiecutter.project_slug}}"
-version = "{{cookiecutter.version}}"
-description = "{{cookiecutter.description}}"
-authors = ["{{cookiecutter.author}}"]
-license = "{{cookiecutter.license}}"
+name = "test"
+version = "0.1.0"
+description = "A FastAPI project with IoC, DI, and tests"
+authors = ["Your Name"]
+license = "MIT"
 packages = [
     { include = "app" }
 ]
 
 [tool.poetry.dependencies]
-python = "^{{cookiecutter.python_version}}"
+python = "^3.12"
 fastapi = "^0.115"
 starlette = "^0.37.2"
 authlib = "^1.2.0"
@@ -31,10 +31,13 @@ opentelemetry-instrumentation-requests = "^0.52b1"
 opentelemetry-instrumentation-asgi = "^0.52b1"
 opentelemetry-instrumentation-httpx = "^0.52b1"
 
-[poetry.group.dev.dependencies]
-pytest = "^8.3.5"
+[tool.poetry.group.dev.dependencies]
 ruff = "^0.0.20"
 black = "^22.3.0"
+
+[tool.poetry.group.test.dependencies]
+pytest = "^8.3.5"
+pytest-asyncio = "^0.26.0"
 
 [tool.ruff]
 line-length = 88
