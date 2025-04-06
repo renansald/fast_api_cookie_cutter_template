@@ -1,26 +1,29 @@
 
 # FastAPI Cookiecutter Template
 
-This template automates the creation of a FastAPI project with Inversion of Control (IoC), Dependency Injection (DI), authentication via Okta, and test support using Cookiecutter.
+This template automates the creation of a production-ready FastAPI project using Cookiecutter. It includes Inversion of Control (IoC), Dependency Injection (DI), Okta authentication, structured logging with Azure Application Insights, and testing support.
 
-## Features
-- **FastAPI** framework
-- **IoC and Dependency Injection** using `dependency-injector`
-- **Environment Configuration** via `.env` file
-- **OAuth2 Authentication** with Okta
-- **Role-Based Authorization** decorator
-- **Testing** using `pytest` with structured test directories
-- **Docker Support** with multi-stage build and run setup
-- **Poetry Package Management** with predefined scripts
+## 🚀 Features
+- **FastAPI** web framework
+- **IoC and Dependency Injection** via dependency-injector
+- **Environment Configuration** using .env
+- **OAuth2 Authentication** with **Okta**
+- **Role-Based Authorization** with a custom decorator
+- **Structured Logging** with Loguru + Azure Application Insights
+- **Testing Suite** with pytest
+- **Code Formatting & Linting** with black and ruff
+- **Docker Support** with a multi-stage setup
+- **Poetry** for dependency and script management
+
 
 ## Installation & Usage
 
-### Prerequisites
+### 💠 Prerequisites
 - Python 3.12+
 - Poetry
 - Cookiecutter
 
-### Generate a New Project
+### 🧱 Generate a New Project
 Run the following command to create a new FastAPI project:
 
 ```sh
@@ -29,35 +32,77 @@ cookiecutter https://github.com/your-repo/fastapi-template.git
 
 Follow the prompts to customize your project.
 
-### Install Dependencies
-Navigate to your newly created project and install dependencies:
+### 📦 Install Dependencies
+#### Enable virtaul env
+
+```sh
+poetry shell
+```
+
+#### Base Dependencies
 
 ```sh
 cd my_fastapi_project
 poetry install
 ```
+#### Install Dev and Test Dependencies
 
-### Run the Application
+To install development and testing tools (e.g., pytest, black, ruff):
+
+```sh
+poetry install --with dev,test
+```
+
+## Run the Application
 To start the application locally:
 
 ```sh
 poetry run uvicorn app.main:app --reload
 ```
 
-### Run Tests
-Run the test suite with:
+You can also install them separately if needed:
+```sh
+poetry install --with dev
+poetry install --with test
+```
+
+### 🥪 Running the Application
+
+#### Start the Development Server
+
+```sh
+poetry run uvicorn app.main:app --reload
+```
+
+##### Run Tests
 
 ```sh
 poetry run pytest
 ```
 
-Generate test coverage report:
+#### Generate test coverage report:
 
 ```sh
 poetry run pytest --cov=app --cov-report=html
 ```
+### 🧹 Code Quality & Formatting
 
-## Project Structure
+#### Format Code with black
+
+```sh
+poetry run black .
+```
+#### Lint Code with ruff
+
+```sh
+poetry run ruff check .
+```
+#### You can also autofix issues with:
+
+```sh
+poetry run ruff check . --fix
+```
+## 🗂️ Project Structure
 
 ```
 my_fastapi_project/
@@ -81,7 +126,7 @@ my_fastapi_project/
 ├── .env                        # Environment variables (not committed)
 ```
 
-## Environment Variables
+## 🧬Environment Variables
 
 Create a `.env` file and define the required variables:
 
@@ -93,7 +138,7 @@ OKTA_DOMAIN="https://your-okta-domain.okta.com"
 OKTA_AUDIENCE="your-api-audience"
 ```
 
-## Authentication & Authorization
+## 🔐 Authentication & Authorization
 
 - Uses Okta for authentication.
 - `roles_required` decorator restricts access to specified roles.
@@ -112,7 +157,7 @@ async def admin_dashboard():
     return {"message": "Welcome, admin!"}
 ```
 
-## Docker Support
+## 🐳 Docker Support
 
 ### Build and Run
 
@@ -128,10 +173,10 @@ Run the container:
 docker run -p 8000:8000 my_fastapi_app
 ```
 
-## Contributing
+## 🤝 Contributing
 
 Feel free to contribute to this template by submitting issues and pull requests.
 
-## License
+## 📄 License
 
 This project is licensed under the MIT License.
