@@ -27,7 +27,7 @@ This template automates the creation of a production-ready FastAPI project using
 Run the following command to create a new FastAPI project:
 
 ```sh
-cookiecutter https://github.com/your-repo/fastapi-template.git
+cookiecutter https://github.com/renansald/fast_api_cookie_cutter_template.git
 ```
 
 Follow the prompts to customize your project.
